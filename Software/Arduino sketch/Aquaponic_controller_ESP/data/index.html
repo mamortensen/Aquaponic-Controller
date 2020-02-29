@@ -1,0 +1,36 @@
+<!DOCTYPE HTML><html>
+<!-- Rui Santos - Complete project details at https://RandomNerdTutorials.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software. -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+      <h1>Hacker Lab Aquaponics</h1>
+      <h2>Sponsored by UniTan Aquafarms</h2>
+  <div id="chart-temperature" class="container"></div>
+  <div id="chart-level" class="container"></div>
+  <div id="chart-power" class="container"></div>
+
+  <form action="/get">
+    Lights on time: <input type="time" name="ontime">
+    <input type="submit" value="Submit">
+  </form><br>
+  <form action="/get">
+    lights off time: <input type="time" name="offtime">
+    <input type="submit" value="Submit">
+  </form><br>
+ 
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

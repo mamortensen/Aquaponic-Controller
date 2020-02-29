@@ -1,0 +1,290 @@
+EESchema Schematic File Version 4
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L arduino:Arduino_Nano_Socket XA?
+U 1 1 5E5428F3
+P 5900 3600
+F 0 "XA?" H 5900 4837 60  0000 C CNN
+F 1 "Arduino_Nano_Socket" H 5900 4731 60  0000 C CNN
+F 2 "" H 7700 7350 60  0001 C CNN
+F 3 "https://store.arduino.cc/arduino-nano" H 7700 7350 60  0001 C CNN
+	1    5900 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L ESP8266:ESP-01v090 U?
+U 1 1 5E542C3A
+P 2550 2250
+F 0 "U?" H 2550 2765 50  0000 C CNN
+F 1 "ESP-01v090" H 2550 2674 50  0000 C CNN
+F 2 "" H 2550 2250 50  0001 C CNN
+F 3 "http://l0l.org.uk/2014/12/esp8266-modules-hardware-guide-gotta-catch-em-all/" H 2550 2250 50  0001 C CNN
+	1    2550 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L resistors:R R?
+U 1 1 5E542E99
+P 4200 2800
+F 0 "R?" V 3985 2775 50  0000 C CNN
+F 1 "10K" V 4076 2775 50  0000 C CNN
+F 2 "" H 4200 2800 50  0001 C CNN
+F 3 "" H 4200 2800 50  0001 C CNN
+	1    4200 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L resistors:R R?
+U 1 1 5E542F09
+P 3500 3200
+F 0 "R?" H 3578 3221 50  0000 L CNN
+F 1 "2.2K" H 3578 3130 50  0000 L CNN
+F 2 "" H 3500 3200 50  0001 C CNN
+F 3 "" H 3500 3200 50  0001 C CNN
+	1    3500 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L resistors:R R?
+U 1 1 5E542FA9
+P 1150 2550
+F 0 "R?" H 1228 2571 50  0000 L CNN
+F 1 "R" H 1228 2480 50  0000 L CNN
+F 2 "" H 1150 2550 50  0001 C CNN
+F 3 "" H 1150 2550 50  0001 C CNN
+	1    1150 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 2800 4450 2800
+Wire Wire Line
+	3900 2800 3500 2800
+Wire Wire Line
+	3500 2800 3500 2400
+Wire Wire Line
+	4600 2700 1500 2700
+Wire Wire Line
+	1500 2700 1500 2100
+Wire Wire Line
+	1500 2100 1600 2100
+$Comp
+L power:+VDC #PWR?
+U 1 1 5E543218
+P 6000 1050
+F 0 "#PWR?" H 6000 950 50  0001 C CNN
+F 1 "+VDC" H 6000 1325 50  0000 C CNN
+F 2 "" H 6000 1050 50  0001 C CNN
+F 3 "" H 6000 1050 50  0001 C CNN
+	1    6000 1050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:-VDC #PWR?
+U 1 1 5E54324B
+P 5500 1050
+F 0 "#PWR?" H 5500 950 50  0001 C CNN
+F 1 "-VDC" H 5500 1325 50  0000 C CNN
+F 2 "" H 5500 1050 50  0001 C CNN
+F 3 "" H 5500 1050 50  0001 C CNN
+	1    5500 1050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E5432AF
+P 4450 4600
+F 0 "#PWR?" H 4450 4350 50  0001 C CNN
+F 1 "GNDREF" H 4455 4427 50  0001 C CNN
+F 2 "" H 4450 4600 50  0001 C CNN
+F 3 "" H 4450 4600 50  0001 C CNN
+	1    4450 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E5433D9
+P 3950 2150
+F 0 "#PWR?" H 3950 1900 50  0001 C CNN
+F 1 "GNDREF" H 3955 1977 50  0001 C CNN
+F 2 "" H 3950 2150 50  0001 C CNN
+F 3 "" H 3950 2150 50  0001 C CNN
+	1    3950 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 2100 3950 2100
+Wire Wire Line
+	3950 2100 3950 2150
+Wire Wire Line
+	5500 1050 5500 1300
+$Comp
+L power:+VDC #PWR?
+U 1 1 5E5436F4
+P 3850 4400
+F 0 "#PWR?" H 3850 4300 50  0001 C CNN
+F 1 "+VDC" H 3850 4675 50  0000 C CNN
+F 2 "" H 3850 4400 50  0001 C CNN
+F 3 "" H 3850 4400 50  0001 C CNN
+	1    3850 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 4500 3850 4500
+Wire Wire Line
+	3850 4500 3850 4400
+Wire Wire Line
+	4600 4100 4450 4100
+Wire Wire Line
+	4450 4100 4450 4200
+Wire Wire Line
+	4600 4200 4450 4200
+Connection ~ 4450 4200
+Wire Wire Line
+	4450 4200 4450 4600
+$Comp
+L power:+5V #PWR?
+U 1 1 5E543B4D
+P 6600 1050
+F 0 "#PWR?" H 6600 900 50  0001 C CNN
+F 1 "+5V" H 6615 1223 50  0000 C CNN
+F 2 "" H 6600 1050 50  0001 C CNN
+F 3 "" H 6600 1050 50  0001 C CNN
+	1    6600 1050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 4400 4100 4400
+Wire Wire Line
+	4100 4400 4100 4250
+$Comp
+L modules:MP1584Module U?
+U 1 1 5E544971
+P 7400 1400
+F 0 "U?" H 7250 1975 50  0000 C CNN
+F 1 "MP1584Module" H 7250 1884 50  0000 C CNN
+F 2 "" H 7400 1400 50  0001 C CNN
+F 3 "" H 7400 1400 50  0001 C CNN
+	1    7400 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E544B5D
+P 6600 1500
+F 0 "#PWR?" H 6600 1250 50  0001 C CNN
+F 1 "GNDREF" H 6605 1327 50  0001 C CNN
+F 2 "" H 6600 1500 50  0001 C CNN
+F 3 "" H 6600 1500 50  0001 C CNN
+	1    6600 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6600 1050 6850 1050
+Wire Wire Line
+	6850 1150 6850 1050
+Connection ~ 6850 1050
+Wire Wire Line
+	6600 1500 6600 1400
+Wire Wire Line
+	6600 1400 6850 1400
+Wire Wire Line
+	6850 1300 6850 1400
+Connection ~ 6850 1400
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E5453CB
+P 7850 1450
+F 0 "#PWR?" H 7850 1200 50  0001 C CNN
+F 1 "GNDREF" H 7855 1277 50  0001 C CNN
+F 2 "" H 7850 1450 50  0001 C CNN
+F 3 "" H 7850 1450 50  0001 C CNN
+	1    7850 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7650 1400 7850 1400
+Wire Wire Line
+	7850 1400 7850 1450
+Wire Wire Line
+	7650 1300 7650 1400
+Connection ~ 7650 1400
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5E54594B
+P 7900 1000
+F 0 "#PWR?" H 7900 850 50  0001 C CNN
+F 1 "+3.3V" H 7915 1173 50  0000 C CNN
+F 2 "" H 7900 1000 50  0001 C CNN
+F 3 "" H 7900 1000 50  0001 C CNN
+	1    7900 1000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 1000 7900 1050
+Wire Wire Line
+	7900 1050 7650 1050
+Wire Wire Line
+	7650 1050 7650 1150
+Connection ~ 7650 1050
+Wire Wire Line
+	3500 2950 3500 2800
+Connection ~ 3500 2800
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E546580
+P 3500 3550
+F 0 "#PWR?" H 3500 3300 50  0001 C CNN
+F 1 "GNDREF" H 3505 3377 50  0001 C CNN
+F 2 "" H 3500 3550 50  0001 C CNN
+F 3 "" H 3500 3550 50  0001 C CNN
+	1    3500 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 3500 3500 3550
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E5474C5
+P 1150 2950
+F 0 "#PWR?" H 1150 2700 50  0001 C CNN
+F 1 "GNDREF" H 1155 2777 50  0001 C CNN
+F 2 "" H 1150 2950 50  0001 C CNN
+F 3 "" H 1150 2950 50  0001 C CNN
+	1    1150 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 2200 1150 2200
+Wire Wire Line
+	1150 2200 1150 2300
+Wire Wire Line
+	1150 2850 1150 2950
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5E54845F
+P 1350 1950
+F 0 "#PWR?" H 1350 1800 50  0001 C CNN
+F 1 "+3.3V" H 1365 2123 50  0000 C CNN
+F 2 "" H 1350 1950 50  0001 C CNN
+F 3 "" H 1350 1950 50  0001 C CNN
+	1    1350 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1600 2400 1350 2400
+Wire Wire Line
+	1350 2400 1350 1950
+$EndSCHEMATC
