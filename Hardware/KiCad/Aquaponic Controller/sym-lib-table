@@ -1,2 +1,3 @@
 (sym_lib_table
+  (lib (name Aquaponic-Controller-rescue)(type Legacy)(uri "${KIPRJMOD}/Aquaponic Controller-rescue.lib")(options "")(descr ""))
 )

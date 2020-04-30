@@ -5,7 +5,6 @@
   then sends the data to the ESP-01 over the serial port.
   
 */  
-//#include "lookup_tables.h"
 
 #include <RunningAverage.h>
 
@@ -19,11 +18,9 @@
 #define MEASURED_BANDGAP 1082L // note: (bandgap * 1000)
 #define ARRAY_SIZE(array) ((sizeof(array))/(sizeof(array[0])))
 
-#define DEBUG true
-//#define DEBUG false
+//#define DEBUG true
+#define DEBUG false
 
-//float sourceV = 4.97; // just set it skip trying to read it.
-//float sourceV = 0; // just set it skip trying to read it.
 String inputString = "";
 
 /* function to read the voltage of the power source.
@@ -33,69 +30,35 @@ RunningAverage avgSrcV(5);
 int readVcc()
 // Calculate current Vcc in mV from the 1.1V reference voltage
 {
- long result;
- long average;
-// long prevAverage = 5000;
+  long result;
+  long average;
 
- // Read 1.1V reference against AVcc
- ADMUX = _BV(REFS0) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
- delay(2); // Wait for Vref to settle
- ADCSRA |= _BV(ADSC); // Convert
- while (bit_is_set(ADCSRA,ADSC));
- result = ADCL;
- result |= ADCH<<8;
- // value of bandgap 1082 measured and refined by trial and error, measured = 1.05V
- // Note, this is specific to this arduino
- result = 1055L * 1024L / result; // Back-calculate AVcc in mV - correct at 4.91
-// result = 1065L * 1024L / result; // Back-calculate AVcc in mV - correct @ 4.73
- avgSrcV.addValue(result);
- average = avgSrcV.getAverage();
-
-// average -= prevAverage/10;
-// average += result/10;
- 
- //average = prevAverage + ((result - prevAverage)/10);
- 
-   if(DEBUG){
+  // Read 1.1V reference against AVcc
+  ADMUX = _BV(REFS0) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
+  delay(2); // Wait for Vref to settle
+  ADCSRA |= _BV(ADSC); // Convert
+  while (bit_is_set(ADCSRA,ADSC));
+  result = ADCL;
+  result |= ADCH<<8;
+  // value of bandgap 1082 measured and refined by trial and error, measured = 1.05V
+  // Note, this is specific to this arduino
+  result = 1055L * 1024L / result; // Back-calculate AVcc in mV - correct at 4.91
+  avgSrcV.addValue(result);
+  average = avgSrcV.getAverage(); 
+  if(DEBUG){
     Serial.print("sourceV: ");
     Serial.print(result);
     Serial.print(" Average: ");
     Serial.println(average);
-   }
+  }
 // return(result);
-//  return(average);
-  return(4910);
+  return(average);
 }
 
-/* get the temperature from the lookup table 
- */
-//int lookupTemp(int v)
-//{
-//  int y = ARRAY_SIZE(Voltages)-1;
-//  if ((v < Voltages[0]) || (v > Voltages[y])){
-//    if(DEBUG){
-//      Serial.println("value out of lookup bownds");
-//    }
-//    return -1;
-//  }
-//  for (int i = 0; i <= y; i++){
-//    
-//    if (Voltages[i] >= v){
-//      return Temps[i];
-//    }
-//  }
-//}
-/* read the temperature sensor 
- */
 
  RunningAverage avgTempValue(5);
 
 float readTemp (float sourceV) {
-  // first time through get the source voltage
-//  if (sourceV == 0) {
-//    sourceV = readVcc();
-//    }
-//  }
   // read the sensor
   int sensorValue = analogRead(TEMP_SENSOR);
   sensorValue = analogRead(TEMP_SENSOR);
@@ -104,19 +67,8 @@ float readTemp (float sourceV) {
   int aveTV = avgTempValue.getAverage();
 
   // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V):
-//  float voltage = sensorValue * (sourceV / 1023.0);
   float voltage = aveTV * (sourceV / 1023.0);
-//  float voltage = sensorValue * (MEASURED_BANDGAP / 1023.0);
   voltage = voltage +10.2; // correction factor?
-//  float voltage = sensorValue * ((sourceV / 1023.0) + 0.5) /10.0; // rounded
-//  float voltage = sensorValue * (sourceV / 1023.0); // = temp * 10 in C
-//  float voltage = map(sensorValue, 0, 1023, 0, sourceV);
-//  int voltage = map(sensorValue, 0, 1023, 0, 5);
-//  float temperature = ((voltage/1000.0) - 2.5814) / -0.0226;
-//  float voltage = (((sourceV * 1024L) / sensorValue) + 5.0) / 100.0;
-//  int waterTemp = lookupTemp(voltage * 100.0);
-    // round and convert to F
-//    int waterTemp = (voltage + 5.0)/10.0 * 1.8 + 32.0;
     float waterTemp = (voltage + 5.0)/10.0 * 1.8 + 32.0;
   if (DEBUG) {
     Serial.print("Sensor v: ");
@@ -184,7 +136,7 @@ float readPower (float sourceV) {
   //sample for 1 Sec
   while((millis()-start_time) < 3000){ 
     readValue = analogRead(POWER_PIN);
-    // see if you have a new maxValue
+    // see if you have a new max or min Value
     if (readValue > maxValue) {
       /*record the maximum sensor value*/
       maxValue = readValue;
@@ -201,17 +153,9 @@ float readPower (float sourceV) {
   avgPP.addValue(Vpp);
   average = avgPP.getAverage();
 
-//  float Vpp = map(PPvalue, 0, 1023, 0.0, sourceV);
-//  peakVoltage += 0.133; // correction factor?
-//  peakVoltage += 133.0; // correction factor?
-//  float Vpp = (PPvalue * sourceV) / 1023.0;
   // 82 ohm resistor, turns ratio 395? by test.
-  // turns ratio 10.7 by trial and error at 6.0A
-  // float iPeak = (peakVoltage/82) * 1070;
-//  float iPeak = (Vpp/82) * 395;
   float iPeak = (average/82) * 395;
   float iRMS = iPeak * 0.707;
-//  float iRMS = 0.0047 * mvPP - .0043; // formula from spreadsheet
   if (iRMS < 0) {
     iRMS = 0;
   }
@@ -244,7 +188,6 @@ void setup() {
   pinMode(POWER_PIN, INPUT);
   pinMode(LIGHTS_PIN, OUTPUT);
 
-//  analogReference(INTERNAL);
   analogReference(DEFAULT);
 
   // initialize serial communication at 115200 bits per second:
@@ -253,6 +196,7 @@ void setup() {
   //reserve 200 bytes for an input string.
   inputString.reserve(200); 
 
+  // initalize arrays for calculating averages to smooth inputs
   avgSrcV.clear();
   avgPP.clear();
   avgTempValue.clear();
@@ -266,7 +210,6 @@ void loop() {
     Serial.println("******************");
   }
     sourceV = readVcc();
-//    sourceV = 4970;
     String Message;
 
   // read sensors and send data to the web
@@ -302,6 +245,7 @@ void loop() {
     inputString = "";
   }
   
-  delay(1000); // wait a sec
+//  delay(1000); // wait a sec
+  delay(30000); // sample twice a minute
 //  delay(60000); // sample once a minute
 }

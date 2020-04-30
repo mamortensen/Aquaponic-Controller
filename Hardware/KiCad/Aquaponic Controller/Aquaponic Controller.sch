@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Aquaponic Controller-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -36,7 +37,7 @@ F 3 "http://l0l.org.uk/2014/12/esp8266-modules-hardware-guide-gotta-catch-em-all
 	1    0    0    -1  
 $EndComp
 $Comp
-L resistors:R R?
+L Aquaponic-Controller-rescue:R-resistors R?
 U 1 1 5E542E99
 P 4200 2800
 F 0 "R?" V 3985 2775 50  0000 C CNN
@@ -47,7 +48,7 @@ F 3 "" H 4200 2800 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L resistors:R R?
+L Aquaponic-Controller-rescue:R-resistors R?
 U 1 1 5E542F09
 P 3500 3200
 F 0 "R?" H 3578 3221 50  0000 L CNN
@@ -58,15 +59,15 @@ F 3 "" H 3500 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L resistors:R R?
+L Aquaponic-Controller-rescue:R-resistors R?
 U 1 1 5E542FA9
-P 1150 2550
-F 0 "R?" H 1228 2571 50  0000 L CNN
-F 1 "R" H 1228 2480 50  0000 L CNN
-F 2 "" H 1150 2550 50  0001 C CNN
-F 3 "" H 1150 2550 50  0001 C CNN
-	1    1150 2550
-	1    0    0    -1  
+P 1000 2200
+F 0 "R?" H 1078 2221 50  0000 L CNN
+F 1 "10K" H 1078 2130 50  0000 L CNN
+F 2 "" H 1000 2200 50  0001 C CNN
+F 3 "" H 1000 2200 50  0001 C CNN
+	1    1000 2200
+	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	4600 2800 4450 2800
@@ -81,28 +82,6 @@ Wire Wire Line
 Wire Wire Line
 	1500 2100 1600 2100
 $Comp
-L power:+VDC #PWR?
-U 1 1 5E543218
-P 6000 1050
-F 0 "#PWR?" H 6000 950 50  0001 C CNN
-F 1 "+VDC" H 6000 1325 50  0000 C CNN
-F 2 "" H 6000 1050 50  0001 C CNN
-F 3 "" H 6000 1050 50  0001 C CNN
-	1    6000 1050
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:-VDC #PWR?
-U 1 1 5E54324B
-P 5500 1050
-F 0 "#PWR?" H 5500 950 50  0001 C CNN
-F 1 "-VDC" H 5500 1325 50  0000 C CNN
-F 2 "" H 5500 1050 50  0001 C CNN
-F 3 "" H 5500 1050 50  0001 C CNN
-	1    5500 1050
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GNDREF #PWR?
 U 1 1 5E5432AF
 P 4450 4600
@@ -116,20 +95,18 @@ $EndComp
 $Comp
 L power:GNDREF #PWR?
 U 1 1 5E5433D9
-P 3950 2150
-F 0 "#PWR?" H 3950 1900 50  0001 C CNN
-F 1 "GNDREF" H 3955 1977 50  0001 C CNN
-F 2 "" H 3950 2150 50  0001 C CNN
-F 3 "" H 3950 2150 50  0001 C CNN
-	1    3950 2150
+P 2400 3950
+F 0 "#PWR?" H 2400 3700 50  0001 C CNN
+F 1 "GNDREF" H 2405 3777 50  0001 C CNN
+F 2 "" H 2400 3950 50  0001 C CNN
+F 3 "" H 2400 3950 50  0001 C CNN
+	1    2400 3950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	3500 2100 3950 2100
 Wire Wire Line
 	3950 2100 3950 2150
-Wire Wire Line
-	5500 1050 5500 1300
 $Comp
 L power:+VDC #PWR?
 U 1 1 5E5436F4
@@ -170,7 +147,7 @@ Wire Wire Line
 Wire Wire Line
 	4100 4400 4100 4250
 $Comp
-L modules:MP1584Module U?
+L Aquaponic-Controller-rescue:MP1584Module-modules U?
 U 1 1 5E544971
 P 7400 1400
 F 0 "U?" H 7250 1975 50  0000 C CNN
@@ -256,23 +233,6 @@ $EndComp
 Wire Wire Line
 	3500 3500 3500 3550
 $Comp
-L power:GNDREF #PWR?
-U 1 1 5E5474C5
-P 1150 2950
-F 0 "#PWR?" H 1150 2700 50  0001 C CNN
-F 1 "GNDREF" H 1155 2777 50  0001 C CNN
-F 2 "" H 1150 2950 50  0001 C CNN
-F 3 "" H 1150 2950 50  0001 C CNN
-	1    1150 2950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1600 2200 1150 2200
-Wire Wire Line
-	1150 2200 1150 2300
-Wire Wire Line
-	1150 2850 1150 2950
-$Comp
 L power:+3.3V #PWR?
 U 1 1 5E54845F
 P 1350 1950
@@ -287,4 +247,316 @@ Wire Wire Line
 	1600 2400 1350 2400
 Wire Wire Line
 	1350 2400 1350 1950
+$Comp
+L Connector_Generic:Conn_01x03 J?
+U 1 1 5E79304B
+P 2050 3700
+F 0 "J?" H 1970 3375 50  0000 C CNN
+F 1 "Conn_01x03" H 1970 3466 50  0000 C CNN
+F 2 "" H 2050 3700 50  0001 C CNN
+F 3 "~" H 2050 3700 50  0001 C CNN
+	1    2050 3700
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5E79376E
+P 2400 3400
+F 0 "#PWR?" H 2400 3250 50  0001 C CNN
+F 1 "+5V" H 2415 3573 50  0000 C CNN
+F 2 "" H 2400 3400 50  0001 C CNN
+F 3 "" H 2400 3400 50  0001 C CNN
+	1    2400 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2250 3800 2400 3800
+Wire Wire Line
+	2400 3800 2400 3950
+Wire Wire Line
+	2250 3600 2400 3600
+Wire Wire Line
+	2400 3600 2400 3400
+Text Notes 1500 3950 0    50   ~ 0
+LM35\nTemperature sensor
+$Comp
+L Connector_Generic:Conn_01x04 J?
+U 1 1 5E794FF7
+P 9700 3200
+F 0 "J?" H 9780 3192 50  0000 L CNN
+F 1 "Conn_01x04" H 9780 3101 50  0000 L CNN
+F 2 "" H 9700 3200 50  0001 C CNN
+F 3 "~" H 9700 3200 50  0001 C CNN
+	1    9700 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E79577F
+P 9300 3500
+F 0 "#PWR?" H 9300 3250 50  0001 C CNN
+F 1 "GNDREF" H 9305 3327 50  0001 C CNN
+F 2 "" H 9300 3500 50  0001 C CNN
+F 3 "" H 9300 3500 50  0001 C CNN
+	1    9300 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E795EFE
+P 3950 2150
+F 0 "#PWR?" H 3950 1900 50  0001 C CNN
+F 1 "GNDREF" H 3955 1977 50  0001 C CNN
+F 2 "" H 3950 2150 50  0001 C CNN
+F 3 "" H 3950 2150 50  0001 C CNN
+	1    3950 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5E79678D
+P 9250 3000
+F 0 "#PWR?" H 9250 2850 50  0001 C CNN
+F 1 "+5V" H 9265 3173 50  0000 C CNN
+F 2 "" H 9250 3000 50  0001 C CNN
+F 3 "" H 9250 3000 50  0001 C CNN
+	1    9250 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9500 3100 9250 3100
+Wire Wire Line
+	9250 3100 9250 3000
+Wire Wire Line
+	9500 3400 9300 3400
+Wire Wire Line
+	9300 3400 9300 3500
+Wire Wire Line
+	9500 3300 8300 3300
+Wire Wire Line
+	8300 3100 7200 3100
+Wire Wire Line
+	8300 3300 8300 3100
+Wire Wire Line
+	7200 3200 9500 3200
+Text Notes 9500 3600 0    50   ~ 0
+Ping sensor
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 5E79B92B
+P 2000 4900
+F 0 "J?" H 2080 4892 50  0000 L CNN
+F 1 "Conn_01x02" H 2080 4801 50  0000 L CNN
+F 2 "" H 2000 4900 50  0001 C CNN
+F 3 "~" H 2000 4900 50  0001 C CNN
+	1    2000 4900
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E79D60B
+P 3100 6700
+F 0 "#PWR?" H 3100 6450 50  0001 C CNN
+F 1 "GNDREF" H 3105 6527 50  0001 C CNN
+F 2 "" H 3100 6700 50  0001 C CNN
+F 3 "" H 3100 6700 50  0001 C CNN
+	1    3100 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2200 4900 2450 4900
+Wire Wire Line
+	3100 6500 3100 6650
+Wire Wire Line
+	2200 4800 3550 4800
+Wire Wire Line
+	3550 4800 3550 3850
+Wire Wire Line
+	3550 3850 3900 3850
+$Comp
+L power:+5V #PWR?
+U 1 1 5E79F62E
+P 4100 4250
+F 0 "#PWR?" H 4100 4100 50  0001 C CNN
+F 1 "+5V" H 4115 4423 50  0000 C CNN
+F 2 "" H 4100 4250 50  0001 C CNN
+F 3 "" H 4100 4250 50  0001 C CNN
+	1    4100 4250
+	1    0    0    -1  
+$EndComp
+Text Label 4050 4500 0    50   ~ 0
+Vin
+$Comp
+L power:+VDC #PWR?
+U 1 1 5E543218
+P 5750 1300
+F 0 "#PWR?" H 5750 1200 50  0001 C CNN
+F 1 "+VDC" H 5750 1575 50  0000 C CNN
+F 2 "" H 5750 1300 50  0001 C CNN
+F 3 "" H 5750 1300 50  0001 C CNN
+	1    5750 1300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 5E7A476C
+P 5650 1000
+F 0 "J?" H 5730 992 50  0000 L CNN
+F 1 "Conn_01x02" H 5730 901 50  0000 L CNN
+F 2 "" H 5650 1000 50  0001 C CNN
+F 3 "~" H 5650 1000 50  0001 C CNN
+	1    5650 1000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E7A78E8
+P 5000 1400
+F 0 "#PWR?" H 5000 1150 50  0001 C CNN
+F 1 "GNDREF" H 5005 1227 50  0001 C CNN
+F 2 "" H 5000 1400 50  0001 C CNN
+F 3 "" H 5000 1400 50  0001 C CNN
+	1    5000 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 1200 5750 1300
+Wire Wire Line
+	5650 1200 5650 1300
+Wire Wire Line
+	5650 1300 5600 1300
+Wire Wire Line
+	5000 1300 5000 1400
+Text Notes 5200 1100 0    50   ~ 0
+Power in\n7 - 12V
+Text Notes 1700 5050 0    50   ~ 0
+Current sensor
+Wire Wire Line
+	4600 3100 3900 3100
+Wire Wire Line
+	3900 3100 3900 3850
+Wire Wire Line
+	4600 3200 4350 3200
+Wire Wire Line
+	4350 3200 4350 3700
+Wire Wire Line
+	4350 3700 2250 3700
+Wire Wire Line
+	1300 2200 1600 2200
+Wire Wire Line
+	750  2200 700  2200
+Wire Wire Line
+	700  2200 700  1900
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5E7D929A
+P 700 1900
+F 0 "#PWR?" H 700 1750 50  0001 C CNN
+F 1 "+3.3V" H 715 2073 50  0000 C CNN
+F 2 "" H 700 1900 50  0001 C CNN
+F 3 "" H 700 1900 50  0001 C CNN
+	1    700  1900
+	1    0    0    -1  
+$EndComp
+Text Label 9250 3200 0    50   ~ 0
+Trig
+Text Label 9300 3300 0    50   ~ 0
+Echo
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 5E7DA5C6
+P 9300 2400
+F 0 "J?" H 9380 2392 50  0000 L CNN
+F 1 "Conn_01x02" H 9380 2301 50  0000 L CNN
+F 2 "" H 9300 2400 50  0001 C CNN
+F 3 "~" H 9300 2400 50  0001 C CNN
+	1    9300 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5E7DE420
+P 9050 2600
+F 0 "#PWR?" H 9050 2350 50  0001 C CNN
+F 1 "GNDREF" H 9055 2427 50  0001 C CNN
+F 2 "" H 9050 2600 50  0001 C CNN
+F 3 "" H 9050 2600 50  0001 C CNN
+	1    9050 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9100 2500 9050 2500
+Wire Wire Line
+	9050 2500 9050 2600
+Wire Wire Line
+	7200 2900 8350 2900
+Wire Wire Line
+	8350 2900 8350 2400
+Wire Wire Line
+	8350 2400 9100 2400
+Text Notes 9200 2650 0    50   ~ 0
+relay
+$Comp
+L Aquaponic-Controller-rescue:R-resistors R?
+U 1 1 5EA6129D
+P 3100 5450
+F 0 "R?" H 3178 5471 50  0000 L CNN
+F 1 "10K" H 3178 5380 50  0000 L CNN
+F 2 "" H 3100 5450 50  0001 C CNN
+F 3 "" H 3100 5450 50  0001 C CNN
+	1    3100 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Aquaponic-Controller-rescue:R-resistors R?
+U 1 1 5EA6140B
+P 3100 6200
+F 0 "R?" H 3178 6221 50  0000 L CNN
+F 1 "10K" H 3178 6130 50  0000 L CNN
+F 2 "" H 3100 6200 50  0001 C CNN
+F 3 "" H 3100 6200 50  0001 C CNN
+	1    3100 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 5750 3100 5750
+Wire Wire Line
+	3100 5750 3100 5950
+Connection ~ 3100 5750
+$Comp
+L power:+5V #PWR?
+U 1 1 5EA66278
+P 3100 5100
+F 0 "#PWR?" H 3100 4950 50  0001 C CNN
+F 1 "+5V" H 3115 5273 50  0000 C CNN
+F 2 "" H 3100 5100 50  0001 C CNN
+F 3 "" H 3100 5100 50  0001 C CNN
+	1    3100 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 4900 2450 5750
+Wire Wire Line
+	3100 5100 3100 5200
+$Comp
+L Device:CP1 C?
+U 1 1 5EA6CF40
+P 2450 6200
+F 0 "C?" H 2565 6246 50  0000 L CNN
+F 1 "10K" H 2565 6155 50  0000 L CNN
+F 2 "" H 2450 6200 50  0001 C CNN
+F 3 "~" H 2450 6200 50  0001 C CNN
+	1    2450 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 5750 2450 6050
+Connection ~ 2450 5750
+Wire Wire Line
+	2450 6350 2450 6650
+Wire Wire Line
+	2450 6650 3100 6650
+Connection ~ 3100 6650
+Wire Wire Line
+	3100 6650 3100 6700
 $EndSCHEMATC
