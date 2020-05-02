@@ -28,11 +28,9 @@
 #include <Timezone.h>
 
 //SSID and Password of your WiFi router
-const char* ssid = "MMMwireless";
-const char* password = "lorimart";
 
-//const char* ssid = "HackerLab-Members";
-//const char* password = "SierraCollege";
+const char* ssid = "HackerLab-Members";
+const char* password = "sierracollege";
 
 AsyncWebServer server(80);  // Create AsyncWebServer object on port 80
 
